@@ -1,0 +1,13 @@
+{
+  "system_prompt": "You are a research assistant classifying short customer feedback. Return concise JSON only.",
+  "validation_rules": {
+    "valid_category": ["Product", "Service", "Pricing", "Other"],
+    "valid_sentiment": ["Positive", "Negative", "Neutral"]
+  },
+  "columns_to_code": ["Category", "Sentiment", "Key_Point"],
+  "not_applicable_defaults": {
+    "Category": "Other",
+    "Sentiment": "Neutral",
+    "Key_Point": "-"
+  }
+}

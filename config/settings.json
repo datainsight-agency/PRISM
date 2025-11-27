@@ -1,0 +1,22 @@
+{
+  "checkpoint_interval": 50,
+  "retry_attempts": 3,
+  "retry_delay_seconds": 5,
+  "required_input_columns": [
+    "RowID",
+    "Message"
+  ],
+  "input_filename": "input.csv",
+  "project_structure": {
+    "data": ["inputs", "outputs"],
+    "checkpoints": [],
+    "logs": ["terminal_logs", "summaries"],
+    "analytics": []
+  },
+  "log_settings": {
+    "save_terminal_logs": true,
+    "create_summaries": true,
+    "create_analytics": true
+  },
+  "interactive_version": "v_public"
+}

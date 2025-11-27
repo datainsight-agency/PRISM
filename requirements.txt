@@ -1,0 +1,4 @@
+ollama
+pandas
+pyyaml
+rich

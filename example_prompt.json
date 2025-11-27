@@ -1,0 +1,20 @@
+{
+  "system_prompt": "You are a domain-agnostic classifier. Given a Title (optional) and Message, infer structured labels. Return JSON only.",
+  "columns_to_code": [
+    "Topic",
+    "Sentiment",
+    "Urgency",
+    "Key_Point"
+  ],
+  "validation_rules": {
+    "valid_topic": ["Product", "Support", "Billing", "Account", "Other"],
+    "valid_sentiment": ["Positive", "Negative", "Neutral"],
+    "valid_urgency": ["High", "Medium", "Low"]
+  },
+  "not_applicable_defaults": {
+    "Topic": "Other",
+    "Sentiment": "Neutral",
+    "Urgency": "Low",
+    "Key_Point": "-"
+  }
+}

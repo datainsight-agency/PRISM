@@ -1,0 +1,16 @@
+{
+  "available_models": [
+    {
+      "id": 1,
+      "name": "your-model-name",
+      "description": "Default model placeholder",
+      "recommended_for": "general"
+    }
+  ],
+  "batch_sizes": [
+    {"size": 1, "description": "Maximum accuracy", "speed_multiplier": 1},
+    {"size": 5, "description": "Balanced", "speed_multiplier": 5},
+    {"size": 10, "description": "Fast", "speed_multiplier": 10},
+    {"size": 15, "description": "Very fast", "speed_multiplier": 15}
+  ]
+}
