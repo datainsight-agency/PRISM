@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-runner.py - PRISM Main Orchestrator
+runner.py - PRISM Single Process Main Orchestrator
 Process · Refine · Integrate · Summarize · Manage
-Consumer Journey Analysis System v4.0
 """
 
 import sys
