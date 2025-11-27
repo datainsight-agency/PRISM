@@ -5,7 +5,6 @@
 A production-ready AI processing framework for CSV-based classification using Ollama Cloud. PRISM provides two operational modes: an interactive single-file runner for exploratory work and a parallel orchestrator for large-scale batch processing.
 
 ![PRISM Banner](docs/images/banner.png)
-<!-- TODO: Add banner image -->
 
 ---
 
@@ -200,7 +199,6 @@ python3 runner.py
 ```
 
 ![Runner with Cloud Model](docs/images/runner_cloud.png)
-<!-- TODO: Add screenshot -->
 
 **Automated Mode:**
 ```bash
@@ -212,7 +210,6 @@ python3 O_orchestrator.py job_config.yaml
 ```
 
 ![Orchestrator Cloud Dashboard](docs/images/orchestrator_cloud.png)
-<!-- TODO: Add screenshot -->
 
 ---
 
@@ -373,7 +370,6 @@ python3 runner.py
 5. Confirm and start processing
 
 ![Runner Interactive](docs/images/runner_interactive.png)
-<!-- TODO: Add screenshot -->
 
 ### Automated Mode (`O_orchestrator.py`)
 
