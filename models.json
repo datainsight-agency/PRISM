@@ -2,15 +2,193 @@
   "available_models": [
     {
       "id": 1,
-      "name": "your-model-name",
-      "description": "Default model placeholder",
-      "recommended_for": "general"
+      "name": "gpt-oss:20b-cloud",
+      "description": "OpenAI open-weight 20B - Fast, low latency, fits 16GB memory",
+      "parameters": "20.9B total, 3.6B active",
+      "context_length": 131072,
+      "recommended_for": "general",
+      "type": "cloud",
+      "provider": "OpenAI",
+      "license": "Apache 2.0",
+      "features": ["function_calling", "chain_of_thought", "structured_outputs"]
+    },
+    {
+      "id": 2,
+      "name": "gpt-oss:120b-cloud",
+      "description": "OpenAI open-weight 120B - Production-grade reasoning, single 80GB GPU",
+      "parameters": "116.8B total, 5.1B active",
+      "context_length": 131072,
+      "recommended_for": "production",
+      "type": "cloud",
+      "provider": "OpenAI",
+      "license": "Apache 2.0",
+      "features": ["function_calling", "chain_of_thought", "structured_outputs", "web_browsing"]
+    },
+    {
+      "id": 3,
+      "name": "deepseek-v3.1:671b-cloud",
+      "description": "DeepSeek V3.1 Terminus - Hybrid thinking/non-thinking, superior tool calling",
+      "parameters": "671B total, 37B active",
+      "context_length": 160000,
+      "recommended_for": "complex_reasoning",
+      "type": "cloud",
+      "provider": "DeepSeek",
+      "license": "DeepSeek License",
+      "features": ["thinking_mode", "tool_calling", "agent_tasks", "hybrid_inference"]
+    },
+    {
+      "id": 4,
+      "name": "qwen3-coder:480b-cloud",
+      "description": "Alibaba Qwen3-Coder 480B - Best agentic coding, multi-file editing",
+      "parameters": "480B total",
+      "context_length": 256000,
+      "recommended_for": "coding",
+      "type": "cloud",
+      "provider": "Alibaba",
+      "license": "Qwen License",
+      "features": ["agentic_coding", "long_context", "multi_file_editing"]
+    },
+    {
+      "id": 5,
+      "name": "qwen3-coder:30b",
+      "description": "Alibaba Qwen3-Coder 30B - Efficient local coding model",
+      "parameters": "30.5B total, 3.3B active",
+      "context_length": 256000,
+      "recommended_for": "coding",
+      "type": "local",
+      "provider": "Alibaba",
+      "license": "Qwen License",
+      "features": ["tool_calling", "agentic_coding"]
+    },
+    {
+      "id": 6,
+      "name": "glm-4.6:cloud",
+      "description": "Zhipu AI GLM-4.6 - Superior coding, advanced reasoning, capable agents",
+      "parameters": "N/A (cloud only)",
+      "context_length": 198000,
+      "recommended_for": "agents",
+      "type": "cloud",
+      "provider": "Zhipu AI",
+      "license": "GLM License",
+      "features": ["superior_coding", "advanced_reasoning", "agent_frameworks", "role_playing"]
+    },
+    {
+      "id": 7,
+      "name": "minimax-m2:cloud",
+      "description": "MiniMax M2 - #1 open-source on Artificial Analysis, efficient agentic workflows",
+      "parameters": "230B total, 10B active",
+      "context_length": 200000,
+      "recommended_for": "agentic",
+      "type": "cloud",
+      "provider": "MiniMax",
+      "license": "MiniMax License",
+      "features": ["agentic_workflows", "browsing", "coding", "tool_use"]
+    },
+    {
+      "id": 8,
+      "name": "kimi-k2:1t-cloud",
+      "description": "Moonshot AI Kimi K2-Instruct-0905 - 1T params, enhanced coding, 256K context",
+      "parameters": "1T total, 32B active",
+      "context_length": 256000,
+      "recommended_for": "general",
+      "type": "cloud",
+      "provider": "Moonshot AI",
+      "license": "Modified MIT",
+      "features": ["enhanced_coding", "frontend_improvements", "extended_context", "tool_calling"]
+    },
+    {
+      "id": 9,
+      "name": "kimi-k2-thinking:cloud",
+      "description": "Moonshot AI Kimi K2 Thinking - Best open-source thinking model, SOTA on HLE",
+      "parameters": "1T+",
+      "context_length": 262000,
+      "recommended_for": "research",
+      "type": "cloud",
+      "provider": "Moonshot AI",
+      "license": "Modified MIT",
+      "features": ["thinking_agent", "200_300_tool_calls", "agentic_search", "creative_writing"]
+    },
+    {
+      "id": 10,
+      "name": "llama3.2",
+      "description": "Meta Llama 3.2 - Compact local model, 1B and 3B variants",
+      "parameters": "1B-3B",
+      "context_length": 128000,
+      "recommended_for": "local",
+      "type": "local",
+      "provider": "Meta",
+      "license": "Llama License",
+      "features": ["small_footprint", "fast_inference"]
+    },
+    {
+      "id": 11,
+      "name": "mistral",
+      "description": "Mistral 7B - Efficient local model for classification",
+      "parameters": "7B",
+      "context_length": 32000,
+      "recommended_for": "classification",
+      "type": "local",
+      "provider": "Mistral AI",
+      "license": "Apache 2.0",
+      "features": ["fast_inference", "good_classification"]
+    },
+    {
+      "id": 12,
+      "name": "qwen3:8b",
+      "description": "Alibaba Qwen3 8B - Balanced local model with tool support",
+      "parameters": "8B",
+      "context_length": 128000,
+      "recommended_for": "general",
+      "type": "local",
+      "provider": "Alibaba",
+      "license": "Apache 2.0",
+      "features": ["tool_calling", "thinking_mode", "multilingual"]
+    },
+    {
+      "id": 13,
+      "name": "deepseek-r1:8b",
+      "description": "DeepSeek R1 8B - Reasoning-focused distilled model",
+      "parameters": "8B",
+      "context_length": 64000,
+      "recommended_for": "reasoning",
+      "type": "local",
+      "provider": "DeepSeek",
+      "license": "DeepSeek License",
+      "features": ["reasoning", "chain_of_thought"]
     }
   ],
+  "cloud_models": [
+    "gpt-oss:20b-cloud",
+    "gpt-oss:120b-cloud",
+    "deepseek-v3.1:671b-cloud",
+    "qwen3-coder:480b-cloud",
+    "glm-4.6:cloud",
+    "minimax-m2:cloud",
+    "kimi-k2:1t-cloud",
+    "kimi-k2-thinking:cloud"
+  ],
+  "model_recommendations": {
+    "fast_general": "gpt-oss:20b-cloud",
+    "production": "gpt-oss:120b-cloud",
+    "complex_reasoning": "deepseek-v3.1:671b-cloud",
+    "coding": "qwen3-coder:480b-cloud",
+    "agents": "glm-4.6:cloud",
+    "agentic_workflows": "minimax-m2:cloud",
+    "research": "kimi-k2-thinking:cloud",
+    "local_small": "llama3.2",
+    "local_balanced": "qwen3:8b"
+  },
   "batch_sizes": [
-    {"size": 1, "description": "Maximum accuracy", "speed_multiplier": 1},
-    {"size": 5, "description": "Balanced", "speed_multiplier": 5},
-    {"size": 10, "description": "Fast", "speed_multiplier": 10},
-    {"size": 15, "description": "Very fast", "speed_multiplier": 15}
-  ]
+    {"size": 1, "description": "Maximum accuracy - best for complex tasks", "speed_multiplier": 1},
+    {"size": 5, "description": "Balanced - good for most use cases", "speed_multiplier": 4},
+    {"size": 10, "description": "Fast - recommended for cloud models", "speed_multiplier": 8},
+    {"size": 15, "description": "Very fast - for simple classification", "speed_multiplier": 12},
+    {"size": 20, "description": "Maximum throughput - cloud only", "speed_multiplier": 15}
+  ],
+  "usage_notes": {
+    "cloud_authentication": "Run 'ollama login' to authenticate with Ollama Cloud",
+    "cloud_pricing": "Ollama Pro subscription ($20/mo) required for extended usage",
+    "rate_limits": "Cloud models have hourly/daily limits; usage-based pricing coming soon",
+    "local_fallback": "If cloud is unavailable, use local models with 'type': 'local'"
+  }
 }
