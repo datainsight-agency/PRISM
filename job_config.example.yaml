@@ -1,51 +1,137 @@
-# job_config.example.yaml - Orchestrator Configuration (public template)
+# job_config.cloud.yaml - Optimized for Ollama Cloud Models
+# Copy this to job_config.yaml and customize for your use case
 
+# ============================================================================
+# PROJECT IDENTIFICATION
+# ============================================================================
 project:
-  name: "sample_project"
+  name: "customer_analysis"
   version: "v1"
-  description: "Example batch classification job"
+  description: "Customer feedback classification using Ollama Cloud"
 
+# ============================================================================
+# MODEL CONFIGURATION
+# ============================================================================
+# Cloud models available (uncomment your choice):
 model:
-  name: "your-model-name"
-  batch_size: 10
-  retries: 3
-  delay: 5
+  # --- FAST & EFFICIENT ---
+  name: "gpt-oss:20b-cloud"              # OpenAI 20B - lowest latency
+  # name: "minimax-m2:cloud"             # MiniMax - efficient agentic
+  
+  # --- BALANCED / PRODUCTION ---
+  # name: "gpt-oss:120b-cloud"           # OpenAI 120B - production grade
+  # name: "glm-4.6:cloud"                # Zhipu - strong coding & agents
+  # name: "kimi-k2:1t-cloud"             # Moonshot - 1T params, 256K context
+  
+  # --- HIGH ACCURACY / REASONING ---
+  # name: "deepseek-v3.1:671b-cloud"     # DeepSeek - best reasoning
+  # name: "qwen3-coder:480b-cloud"       # Alibaba - best for code tasks
+  # name: "kimi-k2-thinking:cloud"       # Moonshot - research-grade thinking
+  
+  # Processing settings (optimized for cloud)
+  batch_size: 10                         # Cloud handles 10-15 well
+  retries: 3                             # Retry on transient failures
+  delay: 5                               # Seconds between retries
 
+# ============================================================================
+# INPUT FILES
+# ============================================================================
 input_queue:
-  - path: "data/sample.csv"
-    label: "sample"
+  - path: "data/input.csv"
+    label: "main"
+  # Add more files as needed:
+  # - path: "data/batch2.csv"
+  #   label: "batch2"
 
+# ============================================================================
+# PARALLELIZATION (Cloud supports higher parallelism)
+# ============================================================================
 parallelization:
   enabled: true
-  workers: 4
-  split_strategy: "auto"
+  workers: 4                             # Cloud can handle 4-8 workers easily
+  split_strategy: "auto"                 # "auto" or "manual"
+  
+  # Manual ranges (only used if split_strategy is "manual")
   manual_ranges:
     - start: 1
-      end: 100
+      end: 250
+    - start: 251
+      end: 500
+    - start: 501
+      end: 750
+    - start: 751
+      end: 1000
 
+# ============================================================================
+# OUTPUT CONFIGURATION
+# ============================================================================
 output:
   directory: "output/"
   naming_pattern: "{run_id}_{label}"
+  
   checkpoints:
     directory: "checkpoints/"
-    interval: 25
-    cleanup_after_merge: false
+    interval: 25                         # Save every 25 rows
+    cleanup_after_merge: false           # Keep checkpoints for debugging
 
+# ============================================================================
+# ERROR HANDLING
+# ============================================================================
 error_handling:
-  strategy: "continue_and_report"
-  max_worker_retries: 1
-  save_failed_ranges: true
-  prompt_on_failure: true
+  strategy: "continue_and_report"        # Don't stop on individual errors
+  max_worker_retries: 2                  # Retry failed workers twice
+  save_failed_ranges: true               # Save failed ranges for later retry
+  prompt_on_failure: true                # Ask user what to do on failure
 
+# ============================================================================
+# MERGE SETTINGS
+# ============================================================================
 merge:
-  auto_merge: true
-  condition: "all_success"
-  sort_by: "RowID"
+  auto_merge: true                       # Automatically merge worker outputs
+  condition: "all_success"               # "all_success", "any_success", "always"
+  sort_by: "RowID"                       # Sort merged output by this column
 
+# ============================================================================
+# PROMPTS CONFIGURATION
+# ============================================================================
 prompts:
-  config_file: "prompts/example_prompt.json"
+  config_file: "prompts/classification_prompt.json"
+  
+  # Alternative prompt files:
+  # config_file: "prompts/sentiment_prompt.json"
+  # config_file: "prompts/coding_review_prompt.json"
 
+# ============================================================================
+# MONITORING & LOGGING
+# ============================================================================
 monitoring:
-  status_dir: "status/"
-  logs_dir: "logs/"
-  dashboard_refresh: 5
+  status_dir: "status/"                  # Worker status JSON files
+  logs_dir: "logs/"                      # Run logs and summaries
+  dashboard_refresh: 5                   # Dashboard update interval (seconds)
+
+# ============================================================================
+# CLOUD-SPECIFIC NOTES
+# ============================================================================
+# 
+# AUTHENTICATION:
+#   Run 'ollama login' before using cloud models
+#
+# RATE LIMITS:
+#   - Free tier: Limited requests
+#   - Pro ($20/mo): 20x+ more usage
+#   - Usage-based pricing coming soon
+#
+# PERFORMANCE TIPS:
+#   1. Use batch_size: 10-15 for cloud models
+#   2. Use 4-8 workers for parallel processing
+#   3. For thinking models (kimi-k2-thinking), reduce batch_size to 5
+#   4. Cloud models handle longer prompts better than local
+#
+# MODEL SELECTION:
+#   - Simple classification: gpt-oss:20b-cloud (fastest)
+#   - Production workloads: gpt-oss:120b-cloud
+#   - Code analysis: qwen3-coder:480b-cloud
+#   - Complex reasoning: deepseek-v3.1:671b-cloud
+#   - Research tasks: kimi-k2-thinking:cloud
+#
+# ============================================================================
