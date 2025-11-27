@@ -4,7 +4,7 @@
 
 A production-ready AI processing framework for CSV-based classification using Ollama Cloud. PRISM provides two operational modes: an interactive single-file runner for exploratory work and a parallel orchestrator for large-scale batch processing.
 
-![PRISM Banner](docs/images/banner.png)
+![PRISM_Banner](docs/images/banner.png)
 
 ---
 
